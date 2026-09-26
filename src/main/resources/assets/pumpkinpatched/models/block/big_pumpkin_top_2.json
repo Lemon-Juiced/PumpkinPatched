@@ -1,0 +1,12 @@
+{
+  "parent": "minecraft:block/cube",
+  "textures": {
+    "north": "pumpkinpatched:block/big_pumpkin_segment_2",
+    "south": "pumpkinpatched:block/big_pumpkin_inside",
+    "west": "pumpkinpatched:block/big_pumpkin_inside",
+    "east": "pumpkinpatched:block/big_pumpkin_inside",
+    "up": "pumpkinpatched:block/big_pumpkin_top_segment_2",
+    "down": "pumpkinpatched:block/big_pumpkin_inside",
+    "particle": "pumpkinpatched:block/big_pumpkin_segment_5"
+  }
+}

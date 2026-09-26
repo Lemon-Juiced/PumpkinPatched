@@ -7,6 +7,9 @@ import net.neoforged.fml.common.Mod;
 import net.neoforged.fml.event.lifecycle.FMLCommonSetupEvent;
 import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
+import site.scalarstudios.pumpkinpatched.block.PPBlocks;
+import site.scalarstudios.pumpkinpatched.item.PPCreativeTabs;
+import site.scalarstudios.pumpkinpatched.item.PPItems;
 
 @Mod(PumpkinPatched.MODID)
 public class PumpkinPatched {
@@ -14,6 +17,14 @@ public class PumpkinPatched {
 
     public PumpkinPatched(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
+
+        // Register Items and Blocks
+        PPItems.register(modEventBus);
+        PPBlocks.register(modEventBus);
+
+        // Register Creative Tabs
+        PPCreativeTabs.register(modEventBus);
+        modEventBus.addListener(PPCreativeTabs::registerTabs);
 
         NeoForge.EVENT_BUS.register(this);
     }

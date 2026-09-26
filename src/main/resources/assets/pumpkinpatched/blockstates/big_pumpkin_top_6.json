@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "pumpkinpatched:block/big_pumpkin_top_6"
+    },
+    "facing=east": {
+      "model": "pumpkinpatched:block/big_pumpkin_top_6",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "pumpkinpatched:block/big_pumpkin_top_6",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "pumpkinpatched:block/big_pumpkin_top_6",
+      "y": 270
+    }
+  }
+}
