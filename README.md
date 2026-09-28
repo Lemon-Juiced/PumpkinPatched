@@ -3,6 +3,8 @@ A Minecraft 26.1.2 mod designed to "patch" pumpkins for autumn by expanding thei
 
 ## Features
 - **Big Pumpkins**: Big 3x3 block pumpkins that naturally generate in the world.
+- **Baked Pumpkin Seeds**: A new food item that can be crafted from pumpkin seeds.
+- **Pumpkin Bread**: A new food item that can be crafted from wheat and a pumpkin.
 
 ## About
 Created for [SpookyJam 2026](https://spooky-jam.com/events/2026/).

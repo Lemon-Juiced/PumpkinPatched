@@ -1,0 +1,9 @@
+{
+  "type": "minecraft:smoking",
+  "experience": 0.35,
+  "cookingtime": 100,
+  "ingredient": "minecraft:pumpkin_seeds",
+  "result": {
+    "id": "pumpkinpatched:baked_pumpkin_seeds"
+  }
+}

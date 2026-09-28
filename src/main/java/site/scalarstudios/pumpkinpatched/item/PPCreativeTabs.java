@@ -19,10 +19,17 @@ public class PPCreativeTabs {
             .title(Component.translatable("itemGroup.pumpkinpatched.blocks"))
             .icon(() -> new ItemStack(Blocks.PUMPKIN.asItem()))
             .build());
+    public static final DeferredHolder<CreativeModeTab, CreativeModeTab> PP_ITEMS_TAB = CREATIVE_MODE_TABS.register("pumpkinpatched_items", () -> CreativeModeTab.builder()
+            .title(Component.translatable("itemGroup.pumpkinpatched.items"))
+            .icon(() -> new ItemStack(PPItems.BAKED_PUMPKIN_SEEDS.get()))
+            .build());
 
     public static void registerTabs(BuildCreativeModeTabContentsEvent event) {
         if (event.getTab() == PP_BLOCKS_TAB.get()) {
             PPBlocks.BIG_PUMPKIN.forEach(event::accept);
+        } else if (event.getTab() == PP_ITEMS_TAB.get()) {
+            event.accept(PPItems.BAKED_PUMPKIN_SEEDS.get());
+            event.accept(PPItems.PUMPKIN_BREAD.get());
         }
     }
 

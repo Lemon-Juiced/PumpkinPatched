@@ -27,5 +27,9 @@
   "block.pumpkinpatched.big_pumpkin_bottom_8": "Big Pumpkin (Bottom 8)",
   "block.pumpkinpatched.big_pumpkin_bottom_9": "Big Pumpkin (Bottom 9)",
 
-  "itemGroup.pumpkinpatched.blocks": "Pumpkin Patched"
+  "item.pumpkinpatched.baked_pumpkin_seeds": "Baked Pumpkin Seeds",
+  "item.pumpkinpatched.pumpkin_bread": "Pumpkin Bread",
+
+  "itemGroup.pumpkinpatched.blocks": "Pumpkin Patched: Blocks",
+  "itemGroup.pumpkinpatched.items": "Pumpkin Patched: Items"
 }

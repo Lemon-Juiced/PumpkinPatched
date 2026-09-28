@@ -1,0 +1,13 @@
+{
+  "type": "minecraft:crafting_shaped",
+  "pattern": [
+    "#P#"
+  ],
+  "key": {
+    "#": "minecraft:wheat",
+    "P": "minecraft:pumpkin"
+  },
+  "result": {
+    "id": "pumpkinpatched:pumpkin_bread"
+  }
+}
