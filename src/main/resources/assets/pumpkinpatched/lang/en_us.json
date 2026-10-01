@@ -27,8 +27,15 @@
   "block.pumpkinpatched.big_pumpkin_bottom_8": "Big Pumpkin (Bottom 8)",
   "block.pumpkinpatched.big_pumpkin_bottom_9": "Big Pumpkin (Bottom 9)",
 
+  "block.pumpkinpatched.pale_pumpkin": "Pale Pumpkin",
+  "block.pumpkinpatched.carved_pale_pumpkin": "Carved Pale Pumpkin",
+  "block.pumpkinpatched.pale_jack_o_lantern": "Pale Jack o'Lantern",
+  "block.pumpkinpatched.pale_pumpkin_stem": "Pale Pumpkin Stem",
+  "block.pumpkinpatched.attached_pale_pumpkin_stem": "Attached Pale Pumpkin Stem",
+
   "item.pumpkinpatched.baked_pumpkin_seeds": "Baked Pumpkin Seeds",
   "item.pumpkinpatched.pumpkin_bread": "Pumpkin Bread",
+  "item.pumpkinpatched.pale_pumpkin_seeds": "Pale Pumpkin Seeds",
 
   "itemGroup.pumpkinpatched.blocks": "Pumpkin Patched: Blocks",
   "itemGroup.pumpkinpatched.items": "Pumpkin Patched: Items"

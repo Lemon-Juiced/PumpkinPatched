@@ -26,10 +26,14 @@ public class PPCreativeTabs {
 
     public static void registerTabs(BuildCreativeModeTabContentsEvent event) {
         if (event.getTab() == PP_BLOCKS_TAB.get()) {
+            event.accept(PPBlocks.PALE_PUMPKIN.get());
+            event.accept(PPBlocks.CARVED_PALE_PUMPKIN.get());
+            event.accept(PPBlocks.PALE_JACK_O_LANTERN.get());
             PPBlocks.BIG_PUMPKIN.forEach(event::accept);
         } else if (event.getTab() == PP_ITEMS_TAB.get()) {
             event.accept(PPItems.BAKED_PUMPKIN_SEEDS.get());
             event.accept(PPItems.PUMPKIN_BREAD.get());
+            event.accept(PPItems.PALE_PUMPKIN_SEEDS.get());
         }
     }
 

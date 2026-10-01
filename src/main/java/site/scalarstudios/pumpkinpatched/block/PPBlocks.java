@@ -1,11 +1,24 @@
 package site.scalarstudios.pumpkinpatched.block;
 
+import net.minecraft.core.component.DataComponents;
+import net.minecraft.core.registries.Registries;
+import net.minecraft.resources.Identifier;
+import net.minecraft.resources.ResourceKey;
+import net.minecraft.tags.BlockTags;
+import net.minecraft.world.entity.EquipmentSlot;
+import net.minecraft.world.item.Item;
+import net.minecraft.world.item.equipment.Equippable;
+import net.minecraft.world.level.block.AttachedStemBlock;
 import net.minecraft.world.level.block.Block;
+import net.minecraft.world.level.block.Blocks;
+import net.minecraft.world.level.block.CarvedPumpkinBlock;
 import net.minecraft.world.level.block.SoundType;
+import net.minecraft.world.level.block.StemBlock;
 import net.minecraft.world.level.block.state.BlockBehaviour;
 import net.minecraft.world.level.block.state.properties.NoteBlockInstrument;
 import net.minecraft.world.level.material.MapColor;
 import net.minecraft.world.level.material.PushReaction;
+import net.minecraft.world.waypoints.Waypoint;
 import net.neoforged.bus.api.IEventBus;
 import net.neoforged.neoforge.registries.DeferredBlock;
 import net.neoforged.neoforge.registries.DeferredRegister;
@@ -19,6 +32,51 @@ import java.util.function.UnaryOperator;
 
 public class PPBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(PumpkinPatched.MODID);
+
+    // Pale Pumpkins
+    public static final DeferredBlock<PalePumpkinBlock> PALE_PUMPKIN = registerBlock("pale_pumpkin", PalePumpkinBlock::new,
+            properties -> properties
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY)
+                    .instrument(NoteBlockInstrument.DIDGERIDOO)
+                    .strength(1.0F)
+                    .sound(SoundType.WOOD)
+                    .pushReaction(PushReaction.DESTROY));
+    public static final DeferredBlock<CarvedPumpkinBlock> CARVED_PALE_PUMPKIN = registerBlock("carved_pale_pumpkin", CarvedPumpkinBlock::new,
+            properties -> properties
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY)
+                    .strength(1.0F)
+                    .sound(SoundType.WOOD)
+                    .isValidSpawn(Blocks::always)
+                    .pushReaction(PushReaction.DESTROY),
+            itemProperties -> Waypoint.addHideAttribute(itemProperties)
+                    .component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD).setSwappable(false).setCameraOverlay(Identifier.withDefaultNamespace("misc/pumpkinblur")).build()));
+    public static final DeferredBlock<CarvedPumpkinBlock> PALE_JACK_O_LANTERN = registerBlock("pale_jack_o_lantern", CarvedPumpkinBlock::new,
+            properties -> properties
+                    .mapColor(MapColor.COLOR_LIGHT_GRAY)
+                    .strength(1.0F)
+                    .sound(SoundType.WOOD)
+                    .lightLevel(state -> 15)
+                    .isValidSpawn(Blocks::always)
+                    .pushReaction(PushReaction.DESTROY));
+
+    // Pale Pumpkin Stems (no block items, Pale Pumpkin Seeds in PPItems places the stem)
+    public static final DeferredBlock<StemBlock> PALE_PUMPKIN_STEM = BLOCKS.registerBlock("pale_pumpkin_stem",
+            properties -> new StemBlock(blockKey("pale_pumpkin"), blockKey("attached_pale_pumpkin_stem"), itemKey("pale_pumpkin_seeds"), BlockTags.SUPPORTS_PUMPKIN_STEM, BlockTags.SUPPORTS_PUMPKIN_STEM_FRUIT, properties),
+            properties -> properties
+                    .mapColor(MapColor.PLANT)
+                    .noCollision()
+                    .randomTicks()
+                    .instabreak()
+                    .sound(SoundType.HARD_CROP)
+                    .pushReaction(PushReaction.DESTROY));
+    public static final DeferredBlock<AttachedStemBlock> ATTACHED_PALE_PUMPKIN_STEM = BLOCKS.registerBlock("attached_pale_pumpkin_stem",
+            properties -> new AttachedStemBlock(blockKey("pale_pumpkin_stem"), blockKey("pale_pumpkin"), itemKey("pale_pumpkin_seeds"), BlockTags.SUPPORTS_PUMPKIN_STEM, properties),
+            properties -> properties
+                    .mapColor(MapColor.PLANT)
+                    .noCollision()
+                    .instabreak()
+                    .sound(SoundType.WOOD)
+                    .pushReaction(PushReaction.DESTROY));
 
     // Big Pumpkin
     public static final ArrayList<String> BIG_PUMPKIN_LAYERS = new ArrayList<>(List.of("top", "middle", "bottom"));
@@ -85,8 +143,22 @@ public class PPBlocks {
      * @return the registered block
      */
     private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends T> blockFactory, UnaryOperator<BlockBehaviour.Properties> properties) {
+        return registerBlock(name, blockFactory, properties, UnaryOperator.identity());
+    }
+
+    /**
+     * Registers a custom block class whose block item needs extra item properties, e.g. a carved pumpkin that can be worn.
+     * Registers via BLOCKS.registerBlock, then calls registerBlockItem with the item properties.
+     *
+     * @param name the registry name of the block
+     * @param blockFactory the constructor or factory that creates the block
+     * @param properties a function that modifies the default block properties
+     * @param itemProperties a function that modifies the default item properties of the block item
+     * @return the registered block
+     */
+    private static <T extends Block> DeferredBlock<T> registerBlock(String name, Function<BlockBehaviour.Properties, ? extends T> blockFactory, UnaryOperator<BlockBehaviour.Properties> properties, UnaryOperator<Item.Properties> itemProperties) {
         DeferredBlock<T> toReturn = BLOCKS.registerBlock(name, blockFactory, properties);
-        registerBlockItem(toReturn);
+        registerBlockItem(toReturn, itemProperties);
         return toReturn;
     }
 
@@ -95,9 +167,30 @@ public class PPBlocks {
      * Calls PPItems.ITEMS.registerSimpleBlockItem.
      *
      * @param block the block to create an item for
+     * @param itemProperties a function that modifies the default item properties
      */
-    private static void registerBlockItem(DeferredBlock<? extends Block> block) {
-        PPItems.ITEMS.registerSimpleBlockItem(block);
+    private static void registerBlockItem(DeferredBlock<? extends Block> block, UnaryOperator<Item.Properties> itemProperties) {
+        PPItems.ITEMS.registerSimpleBlockItem(block, itemProperties);
+    }
+
+    /**
+     * Creates a registry key for one of this mod's blocks, used where vanilla refers to blocks by key, e.g. StemBlock.
+     *
+     * @param name the registry name of the block
+     * @return the block's registry key
+     */
+    private static ResourceKey<Block> blockKey(String name) {
+        return ResourceKey.create(Registries.BLOCK, Identifier.fromNamespaceAndPath(PumpkinPatched.MODID, name));
+    }
+
+    /**
+     * Creates a registry key for one of this mod's items, used where vanilla refers to items by key, e.g. StemBlock.
+     *
+     * @param name the registry name of the item
+     * @return the item's registry key
+     */
+    private static ResourceKey<Item> itemKey(String name) {
+        return ResourceKey.create(Registries.ITEM, Identifier.fromNamespaceAndPath(PumpkinPatched.MODID, name));
     }
 
     public static void register(IEventBus eventBus) {
