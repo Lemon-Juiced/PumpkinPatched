@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_end",
+  "features": "pumpkinpatched:patch_eldritch_pumpkin",
+  "step": "vegetal_decoration"
+}

@@ -1,0 +1,16 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "group": "spooky_stew",
+  "ingredients": [
+    "pumpkinpatched:sculk_pumpkin",
+    "#c:mushrooms",
+    "minecraft:bowl"
+  ],
+  "result": {
+    "id": "pumpkinpatched:spooky_stew",
+    "components": {
+      "pumpkinpatched:spooky_stew_pumpkin": "sculk"
+    }
+  }
+}

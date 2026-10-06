@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "pumpkinpatched:ember_pumpkin"
+  ],
+  "result": {
+    "count": 4,
+    "id": "pumpkinpatched:ember_pumpkin_seeds"
+  }
+}

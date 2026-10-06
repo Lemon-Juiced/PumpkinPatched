@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "pumpkinpatched:pale_pumpkin",
-    "pumpkinpatched:sculk_pumpkin"
+    "pumpkinpatched:sculk_pumpkin",
+    "pumpkinpatched:ember_pumpkin",
+    "pumpkinpatched:eldritch_pumpkin"
   ]
 }

@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=west": {
+      "model": "pumpkinpatched:block/attached_eldritch_pumpkin_stem"
+    },
+    "facing=north": {
+      "model": "pumpkinpatched:block/attached_eldritch_pumpkin_stem",
+      "y": 90
+    },
+    "facing=east": {
+      "model": "pumpkinpatched:block/attached_eldritch_pumpkin_stem",
+      "y": 180
+    },
+    "facing=south": {
+      "model": "pumpkinpatched:block/attached_eldritch_pumpkin_stem",
+      "y": 270
+    }
+  }
+}

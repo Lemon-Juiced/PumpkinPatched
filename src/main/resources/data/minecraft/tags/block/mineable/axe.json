@@ -33,6 +33,12 @@
     "pumpkinpatched:pale_jack_o_lantern",
     "pumpkinpatched:sculk_pumpkin",
     "pumpkinpatched:carved_sculk_pumpkin",
-    "pumpkinpatched:sculk_jack_o_lantern"
+    "pumpkinpatched:sculk_jack_o_lantern",
+    "pumpkinpatched:ember_pumpkin",
+    "pumpkinpatched:carved_ember_pumpkin",
+    "pumpkinpatched:ember_jack_o_lantern",
+    "pumpkinpatched:eldritch_pumpkin",
+    "pumpkinpatched:carved_eldritch_pumpkin",
+    "pumpkinpatched:eldritch_jack_o_lantern"
   ]
 }

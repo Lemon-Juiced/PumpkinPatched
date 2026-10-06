@@ -1,0 +1,11 @@
+{
+  "type": "minecraft:crafting_shapeless",
+  "category": "misc",
+  "ingredients": [
+    "pumpkinpatched:eldritch_pumpkin"
+  ],
+  "result": {
+    "count": 4,
+    "id": "pumpkinpatched:eldritch_pumpkin_seeds"
+  }
+}

@@ -1,0 +1,8 @@
+{
+  "parent": "minecraft:block/orientable",
+  "textures": {
+    "front": "pumpkinpatched:block/eldritch_jack_o_lantern",
+    "side": "pumpkinpatched:block/eldritch_pumpkin_side",
+    "top": "pumpkinpatched:block/eldritch_pumpkin_top"
+  }
+}

@@ -33,97 +33,33 @@ import java.util.function.UnaryOperator;
 public class PPBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(PumpkinPatched.MODID);
 
-    // Pale Pumpkins
-    public static final DeferredBlock<CarvablePumpkinBlock> PALE_PUMPKIN = registerBlock("pale_pumpkin",
-            properties -> new CarvablePumpkinBlock(PPBlocks.CARVED_PALE_PUMPKIN, CarvablePumpkinBlock.carveLootTable("pale_pumpkin"), properties),
-            properties -> properties
-                    .mapColor(MapColor.COLOR_LIGHT_GRAY)
-                    .instrument(NoteBlockInstrument.DIDGERIDOO)
-                    .strength(1.0F)
-                    .sound(SoundType.WOOD)
-                    .pushReaction(PushReaction.DESTROY));
-    public static final DeferredBlock<CarvedPumpkinBlock> CARVED_PALE_PUMPKIN = registerBlock("carved_pale_pumpkin", CarvedPumpkinBlock::new,
-            properties -> properties
-                    .mapColor(MapColor.COLOR_LIGHT_GRAY)
-                    .strength(1.0F)
-                    .sound(SoundType.WOOD)
-                    .isValidSpawn(Blocks::always)
-                    .pushReaction(PushReaction.DESTROY),
-            itemProperties -> Waypoint.addHideAttribute(itemProperties)
-                    .component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD).setSwappable(false).setCameraOverlay(Identifier.withDefaultNamespace("misc/pumpkinblur")).build()));
-    public static final DeferredBlock<CarvedPumpkinBlock> PALE_JACK_O_LANTERN = registerBlock("pale_jack_o_lantern", CarvedPumpkinBlock::new,
-            properties -> properties
-                    .mapColor(MapColor.COLOR_LIGHT_GRAY)
-                    .strength(1.0F)
-                    .sound(SoundType.WOOD)
-                    .lightLevel(state -> 15)
-                    .isValidSpawn(Blocks::always)
-                    .pushReaction(PushReaction.DESTROY));
+    // Eldritch Pumpkins (stems have no block items, Eldritch Pumpkin Seeds in PPItems places the stem)
+    public static final DeferredBlock<CarvablePumpkinBlock> ELDRITCH_PUMPKIN = registerPumpkin("eldritch", MapColor.COLOR_PURPLE, SoundType.WOOD);
+    public static final DeferredBlock<CarvedPumpkinBlock> CARVED_ELDRITCH_PUMPKIN = registerCarvedPumpkin("eldritch", MapColor.COLOR_PURPLE, SoundType.WOOD);
+    public static final DeferredBlock<CarvedPumpkinBlock> ELDRITCH_JACK_O_LANTERN = registerJackOLantern("eldritch", MapColor.COLOR_PURPLE, SoundType.WOOD);
+    public static final DeferredBlock<StemBlock> ELDRITCH_PUMPKIN_STEM = registerPumpkinStem("eldritch");
+    public static final DeferredBlock<AttachedStemBlock> ATTACHED_ELDRITCH_PUMPKIN_STEM = registerAttachedPumpkinStem("eldritch");
 
-    // Pale Pumpkin Stems (no block items, Pale Pumpkin Seeds in PPItems places the stem)
-    public static final DeferredBlock<StemBlock> PALE_PUMPKIN_STEM = BLOCKS.registerBlock("pale_pumpkin_stem",
-            properties -> new StemBlock(blockKey("pale_pumpkin"), blockKey("attached_pale_pumpkin_stem"), itemKey("pale_pumpkin_seeds"), BlockTags.SUPPORTS_PUMPKIN_STEM, BlockTags.SUPPORTS_PUMPKIN_STEM_FRUIT, properties),
-            properties -> properties
-                    .mapColor(MapColor.PLANT)
-                    .noCollision()
-                    .randomTicks()
-                    .instabreak()
-                    .sound(SoundType.HARD_CROP)
-                    .pushReaction(PushReaction.DESTROY));
-    public static final DeferredBlock<AttachedStemBlock> ATTACHED_PALE_PUMPKIN_STEM = BLOCKS.registerBlock("attached_pale_pumpkin_stem",
-            properties -> new AttachedStemBlock(blockKey("pale_pumpkin_stem"), blockKey("pale_pumpkin"), itemKey("pale_pumpkin_seeds"), BlockTags.SUPPORTS_PUMPKIN_STEM, properties),
-            properties -> properties
-                    .mapColor(MapColor.PLANT)
-                    .noCollision()
-                    .instabreak()
-                    .sound(SoundType.WOOD)
-                    .pushReaction(PushReaction.DESTROY));
+    // Ember Pumpkins (stems have no block items, Ember Pumpkin Seeds in PPItems places the stem)
+    public static final DeferredBlock<CarvablePumpkinBlock> EMBER_PUMPKIN = registerPumpkin("ember", MapColor.NETHER, SoundType.NETHER_WOOD);
+    public static final DeferredBlock<CarvedPumpkinBlock> CARVED_EMBER_PUMPKIN = registerCarvedPumpkin("ember", MapColor.NETHER, SoundType.NETHER_WOOD);
+    public static final DeferredBlock<CarvedPumpkinBlock> EMBER_JACK_O_LANTERN = registerJackOLantern("ember", MapColor.NETHER, SoundType.NETHER_WOOD);
+    public static final DeferredBlock<StemBlock> EMBER_PUMPKIN_STEM = registerPumpkinStem("ember");
+    public static final DeferredBlock<AttachedStemBlock> ATTACHED_EMBER_PUMPKIN_STEM = registerAttachedPumpkinStem("ember");
 
-    // Sculk Pumpkins
-    public static final DeferredBlock<CarvablePumpkinBlock> SCULK_PUMPKIN = registerBlock("sculk_pumpkin",
-            properties -> new CarvablePumpkinBlock(PPBlocks.CARVED_SCULK_PUMPKIN, CarvablePumpkinBlock.carveLootTable("sculk_pumpkin"), properties),
-            properties -> properties
-                    .mapColor(MapColor.COLOR_BLACK)
-                    .instrument(NoteBlockInstrument.DIDGERIDOO)
-                    .strength(1.0F)
-                    .sound(SoundType.SCULK)
-                    .pushReaction(PushReaction.DESTROY));
-    public static final DeferredBlock<CarvedPumpkinBlock> CARVED_SCULK_PUMPKIN = registerBlock("carved_sculk_pumpkin", CarvedPumpkinBlock::new,
-            properties -> properties
-                    .mapColor(MapColor.COLOR_BLACK)
-                    .strength(1.0F)
-                    .sound(SoundType.SCULK)
-                    .isValidSpawn(Blocks::always)
-                    .pushReaction(PushReaction.DESTROY),
-            itemProperties -> Waypoint.addHideAttribute(itemProperties)
-                    .component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD).setSwappable(false).setCameraOverlay(Identifier.withDefaultNamespace("misc/pumpkinblur")).build()));
-    public static final DeferredBlock<CarvedPumpkinBlock> SCULK_JACK_O_LANTERN = registerBlock("sculk_jack_o_lantern", CarvedPumpkinBlock::new,
-            properties -> properties
-                    .mapColor(MapColor.COLOR_BLACK)
-                    .strength(1.0F)
-                    .sound(SoundType.SCULK)
-                    .lightLevel(state -> 15)
-                    .isValidSpawn(Blocks::always)
-                    .pushReaction(PushReaction.DESTROY));
+    // Pale Pumpkins (stems have no block items, Pale Pumpkin Seeds in PPItems places the stem)
+    public static final DeferredBlock<CarvablePumpkinBlock> PALE_PUMPKIN = registerPumpkin("pale", MapColor.COLOR_LIGHT_GRAY, SoundType.WOOD);
+    public static final DeferredBlock<CarvedPumpkinBlock> CARVED_PALE_PUMPKIN = registerCarvedPumpkin("pale", MapColor.COLOR_LIGHT_GRAY, SoundType.WOOD);
+    public static final DeferredBlock<CarvedPumpkinBlock> PALE_JACK_O_LANTERN = registerJackOLantern("pale", MapColor.COLOR_LIGHT_GRAY, SoundType.WOOD);
+    public static final DeferredBlock<StemBlock> PALE_PUMPKIN_STEM = registerPumpkinStem("pale");
+    public static final DeferredBlock<AttachedStemBlock> ATTACHED_PALE_PUMPKIN_STEM = registerAttachedPumpkinStem("pale");
 
-    // Sculk Pumpkin Stems (no block items, Sculk Pumpkin Seeds in PPItems places the stem)
-    public static final DeferredBlock<StemBlock> SCULK_PUMPKIN_STEM = BLOCKS.registerBlock("sculk_pumpkin_stem",
-            properties -> new StemBlock(blockKey("sculk_pumpkin"), blockKey("attached_sculk_pumpkin_stem"), itemKey("sculk_pumpkin_seeds"), BlockTags.SUPPORTS_PUMPKIN_STEM, BlockTags.SUPPORTS_PUMPKIN_STEM_FRUIT, properties),
-            properties -> properties
-                    .mapColor(MapColor.PLANT)
-                    .noCollision()
-                    .randomTicks()
-                    .instabreak()
-                    .sound(SoundType.HARD_CROP)
-                    .pushReaction(PushReaction.DESTROY));
-    public static final DeferredBlock<AttachedStemBlock> ATTACHED_SCULK_PUMPKIN_STEM = BLOCKS.registerBlock("attached_sculk_pumpkin_stem",
-            properties -> new AttachedStemBlock(blockKey("sculk_pumpkin_stem"), blockKey("sculk_pumpkin"), itemKey("sculk_pumpkin_seeds"), BlockTags.SUPPORTS_PUMPKIN_STEM, properties),
-            properties -> properties
-                    .mapColor(MapColor.PLANT)
-                    .noCollision()
-                    .instabreak()
-                    .sound(SoundType.WOOD)
-                    .pushReaction(PushReaction.DESTROY));
+    // Sculk Pumpkins (stems have no block items, Sculk Pumpkin Seeds in PPItems places the stem)
+    public static final DeferredBlock<CarvablePumpkinBlock> SCULK_PUMPKIN = registerPumpkin("sculk", MapColor.COLOR_BLACK, SoundType.SCULK);
+    public static final DeferredBlock<CarvedPumpkinBlock> CARVED_SCULK_PUMPKIN = registerCarvedPumpkin("sculk", MapColor.COLOR_BLACK, SoundType.SCULK);
+    public static final DeferredBlock<CarvedPumpkinBlock> SCULK_JACK_O_LANTERN = registerJackOLantern("sculk", MapColor.COLOR_BLACK, SoundType.SCULK);
+    public static final DeferredBlock<StemBlock> SCULK_PUMPKIN_STEM = registerPumpkinStem("sculk");
+    public static final DeferredBlock<AttachedStemBlock> ATTACHED_SCULK_PUMPKIN_STEM = registerAttachedPumpkinStem("sculk");
 
     // Big Pumpkin
     public static final ArrayList<String> BIG_PUMPKIN_LAYERS = new ArrayList<>(List.of("top", "middle", "bottom"));
@@ -152,6 +88,108 @@ public class PPBlocks {
             }
         }
         return List.copyOf(segments);
+    }
+
+    /**
+     * Registers a pumpkin variant's pumpkin block as (variant)_pumpkin, carvable with shears like the vanilla pumpkin.
+     * Carves into carved_(variant)_pumpkin and drops the carve/(variant)_pumpkin loot table.
+     * Calls registerBlock(name, blockFactory, UnaryOperator).
+     *
+     * @param variant the pumpkin variant, e.g. pale
+     * @param mapColor the color of the block on maps
+     * @param sound the sound the block makes
+     * @return the registered block
+     */
+    private static DeferredBlock<CarvablePumpkinBlock> registerPumpkin(String variant, MapColor mapColor, SoundType sound) {
+        DeferredBlock<Block> carvedPumpkin = DeferredBlock.createBlock(blockKey("carved_" + variant + "_pumpkin"));
+        return registerBlock(variant + "_pumpkin",
+                properties -> new CarvablePumpkinBlock(carvedPumpkin, CarvablePumpkinBlock.carveLootTable(variant + "_pumpkin"), properties),
+                properties -> properties
+                        .mapColor(mapColor)
+                        .instrument(NoteBlockInstrument.DIDGERIDOO)
+                        .strength(1.0F)
+                        .sound(sound)
+                        .pushReaction(PushReaction.DESTROY));
+    }
+
+    /**
+     * Registers a pumpkin variant's carved pumpkin as carved_(variant)_pumpkin, wearable on the head like the vanilla carved pumpkin.
+     * Calls registerBlock(name, blockFactory, UnaryOperator, UnaryOperator) to add the head slot to its item.
+     *
+     * @param variant the pumpkin variant, e.g. pale
+     * @param mapColor the color of the block on maps
+     * @param sound the sound the block makes
+     * @return the registered block
+     */
+    private static DeferredBlock<CarvedPumpkinBlock> registerCarvedPumpkin(String variant, MapColor mapColor, SoundType sound) {
+        return registerBlock("carved_" + variant + "_pumpkin", CarvedPumpkinBlock::new,
+                properties -> properties
+                        .mapColor(mapColor)
+                        .strength(1.0F)
+                        .sound(sound)
+                        .isValidSpawn(Blocks::always)
+                        .pushReaction(PushReaction.DESTROY),
+                itemProperties -> Waypoint.addHideAttribute(itemProperties)
+                        .component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD).setSwappable(false).setCameraOverlay(Identifier.withDefaultNamespace("misc/pumpkinblur")).build()));
+    }
+
+    /**
+     * Registers a pumpkin variant's jack o'lantern as (variant)_jack_o_lantern, giving off light level 15.
+     * Calls registerBlock(name, blockFactory, UnaryOperator).
+     *
+     * @param variant the pumpkin variant, e.g. pale
+     * @param mapColor the color of the block on maps
+     * @param sound the sound the block makes
+     * @return the registered block
+     */
+    private static DeferredBlock<CarvedPumpkinBlock> registerJackOLantern(String variant, MapColor mapColor, SoundType sound) {
+        return registerBlock(variant + "_jack_o_lantern", CarvedPumpkinBlock::new,
+                properties -> properties
+                        .mapColor(mapColor)
+                        .strength(1.0F)
+                        .sound(sound)
+                        .lightLevel(state -> 15)
+                        .isValidSpawn(Blocks::always)
+                        .pushReaction(PushReaction.DESTROY));
+    }
+
+    /**
+     * Registers a pumpkin variant's growing stem as (variant)_pumpkin_stem.
+     * Grows (variant)_pumpkin next to it and turns into attached_(variant)_pumpkin_stem, like the vanilla pumpkin stem.
+     * Calls BLOCKS.registerBlock directly so no block item is made, (variant)_pumpkin_seeds in PPItems places it instead.
+     *
+     * @param variant the pumpkin variant, e.g. pale
+     * @return the registered block
+     */
+    private static DeferredBlock<StemBlock> registerPumpkinStem(String variant) {
+        return BLOCKS.registerBlock(variant + "_pumpkin_stem",
+                properties -> new StemBlock(blockKey(variant + "_pumpkin"), blockKey("attached_" + variant + "_pumpkin_stem"), itemKey(variant + "_pumpkin_seeds"), BlockTags.SUPPORTS_PUMPKIN_STEM, BlockTags.SUPPORTS_PUMPKIN_STEM_FRUIT, properties),
+                properties -> properties
+                        .mapColor(MapColor.PLANT)
+                        .noCollision()
+                        .randomTicks()
+                        .instabreak()
+                        .sound(SoundType.HARD_CROP)
+                        .pushReaction(PushReaction.DESTROY));
+    }
+
+    /**
+     * Registers a pumpkin variant's attached stem as attached_(variant)_pumpkin_stem.
+     * Turns back into (variant)_pumpkin_stem when its pumpkin is removed, like the vanilla attached pumpkin stem.
+     * Calls BLOCKS.registerBlock directly so no block item is made.
+     *
+     * @param variant the pumpkin variant, e.g. pale
+     * @return the registered block
+     */
+    private static DeferredBlock<AttachedStemBlock> registerAttachedPumpkinStem(String variant) {
+        return BLOCKS.registerBlock("attached_" + variant + "_pumpkin_stem",
+                properties -> new AttachedStemBlock(blockKey(variant + "_pumpkin_stem"), blockKey(variant + "_pumpkin"), itemKey(variant + "_pumpkin_seeds"), BlockTags.SUPPORTS_PUMPKIN_STEM, properties),
+                properties -> properties
+                        .mapColor(MapColor.PLANT)
+                        .noCollision()
+                        .instabreak()
+                        .sound(SoundType.WOOD)
+                        .pushReaction(PushReaction.DESTROY));
     }
 
     /**

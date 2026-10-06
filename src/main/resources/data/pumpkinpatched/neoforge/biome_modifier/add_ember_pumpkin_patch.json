@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "#minecraft:is_nether",
+  "features": "pumpkinpatched:patch_ember_pumpkin",
+  "step": "vegetal_decoration"
+}

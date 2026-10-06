@@ -26,6 +26,12 @@ public class PPCreativeTabs {
 
     public static void registerTabs(BuildCreativeModeTabContentsEvent event) {
         if (event.getTab() == PP_BLOCKS_TAB.get()) {
+            event.accept(PPBlocks.ELDRITCH_PUMPKIN.get());
+            event.accept(PPBlocks.CARVED_ELDRITCH_PUMPKIN.get());
+            event.accept(PPBlocks.ELDRITCH_JACK_O_LANTERN.get());
+            event.accept(PPBlocks.EMBER_PUMPKIN.get());
+            event.accept(PPBlocks.CARVED_EMBER_PUMPKIN.get());
+            event.accept(PPBlocks.EMBER_JACK_O_LANTERN.get());
             event.accept(PPBlocks.PALE_PUMPKIN.get());
             event.accept(PPBlocks.CARVED_PALE_PUMPKIN.get());
             event.accept(PPBlocks.PALE_JACK_O_LANTERN.get());
@@ -36,6 +42,13 @@ public class PPCreativeTabs {
         } else if (event.getTab() == PP_ITEMS_TAB.get()) {
             event.accept(PPItems.BAKED_PUMPKIN_SEEDS.get());
             event.accept(PPItems.PUMPKIN_BREAD.get());
+            for (SpookyStewPumpkin pumpkin : SpookyStewPumpkin.values()) {
+                ItemStack stew = new ItemStack(PPItems.SPOOKY_STEW.get());
+                stew.set(PPDataComponents.SPOOKY_STEW_PUMPKIN.get(), pumpkin);
+                event.accept(stew);
+            }
+            event.accept(PPItems.ELDRITCH_PUMPKIN_SEEDS.get());
+            event.accept(PPItems.EMBER_PUMPKIN_SEEDS.get());
             event.accept(PPItems.PALE_PUMPKIN_SEEDS.get());
             event.accept(PPItems.SCULK_PUMPKIN_SEEDS.get());
         }

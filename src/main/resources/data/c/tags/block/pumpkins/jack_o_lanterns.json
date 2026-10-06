@@ -2,6 +2,8 @@
   "replace": false,
   "values": [
     "pumpkinpatched:pale_jack_o_lantern",
-    "pumpkinpatched:sculk_jack_o_lantern"
+    "pumpkinpatched:sculk_jack_o_lantern",
+    "pumpkinpatched:ember_jack_o_lantern",
+    "pumpkinpatched:eldritch_jack_o_lantern"
   ]
 }

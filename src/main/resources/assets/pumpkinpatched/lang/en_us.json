@@ -37,12 +37,31 @@
   "block.pumpkinpatched.sculk_jack_o_lantern": "Sculk Jack o'Lantern",
   "block.pumpkinpatched.sculk_pumpkin_stem": "Sculk Pumpkin Stem",
   "block.pumpkinpatched.attached_sculk_pumpkin_stem": "Attached Sculk Pumpkin Stem",
+  "block.pumpkinpatched.ember_pumpkin": "Ember Pumpkin",
+  "block.pumpkinpatched.carved_ember_pumpkin": "Carved Ember Pumpkin",
+  "block.pumpkinpatched.ember_jack_o_lantern": "Ember Jack o'Lantern",
+  "block.pumpkinpatched.ember_pumpkin_stem": "Ember Pumpkin Stem",
+  "block.pumpkinpatched.attached_ember_pumpkin_stem": "Attached Ember Pumpkin Stem",
+  "block.pumpkinpatched.eldritch_pumpkin": "Eldritch Pumpkin",
+  "block.pumpkinpatched.carved_eldritch_pumpkin": "Carved Eldritch Pumpkin",
+  "block.pumpkinpatched.eldritch_jack_o_lantern": "Eldritch Jack o'Lantern",
+  "block.pumpkinpatched.eldritch_pumpkin_stem": "Eldritch Pumpkin Stem",
+  "block.pumpkinpatched.attached_eldritch_pumpkin_stem": "Attached Eldritch Pumpkin Stem",
 
   "item.pumpkinpatched.baked_pumpkin_seeds": "Baked Pumpkin Seeds",
   "item.pumpkinpatched.pumpkin_bread": "Pumpkin Bread",
+  "item.pumpkinpatched.spooky_stew": "Spooky Stew",
   "item.pumpkinpatched.pale_pumpkin_seeds": "Pale Pumpkin Seeds",
   "item.pumpkinpatched.sculk_pumpkin_seeds": "Sculk Pumpkin Seeds",
+  "item.pumpkinpatched.ember_pumpkin_seeds": "Ember Pumpkin Seeds",
+  "item.pumpkinpatched.eldritch_pumpkin_seeds": "Eldritch Pumpkin Seeds",
 
   "itemGroup.pumpkinpatched.blocks": "Pumpkin Patched: Blocks",
-  "itemGroup.pumpkinpatched.items": "Pumpkin Patched: Items"
+  "itemGroup.pumpkinpatched.items": "Pumpkin Patched: Items",
+
+  "tooltip.pumpkinpatched.spooky_stew.eldritch": "Made with Eldritch Pumpkin",
+  "tooltip.pumpkinpatched.spooky_stew.ember": "Made with Ember Pumpkin",
+  "tooltip.pumpkinpatched.spooky_stew.pumpkin": "Made with Pumpkin",
+  "tooltip.pumpkinpatched.spooky_stew.pale": "Made with Pale Pumpkin",
+  "tooltip.pumpkinpatched.spooky_stew.sculk": "Made with Sculk Pumpkin"
 }

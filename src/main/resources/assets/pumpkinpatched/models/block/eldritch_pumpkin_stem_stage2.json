@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:block/stem_growth2",
+  "textures": {
+    "stem": "pumpkinpatched:block/eldritch_pumpkin_stem"
+  }
+}

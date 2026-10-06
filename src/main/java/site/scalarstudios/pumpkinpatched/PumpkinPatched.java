@@ -9,6 +9,7 @@ import net.neoforged.neoforge.common.NeoForge;
 import net.neoforged.neoforge.event.server.ServerStartingEvent;
 import site.scalarstudios.pumpkinpatched.block.PPBlocks;
 import site.scalarstudios.pumpkinpatched.item.PPCreativeTabs;
+import site.scalarstudios.pumpkinpatched.item.PPDataComponents;
 import site.scalarstudios.pumpkinpatched.item.PPItems;
 
 @Mod(PumpkinPatched.MODID)
@@ -18,7 +19,8 @@ public class PumpkinPatched {
     public PumpkinPatched(IEventBus modEventBus, ModContainer modContainer) {
         modEventBus.addListener(this::commonSetup);
 
-        // Register Items and Blocks
+        // Register Data Components, Items and Blocks
+        PPDataComponents.register(modEventBus);
         PPItems.register(modEventBus);
         PPBlocks.register(modEventBus);
 
