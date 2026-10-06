@@ -1,0 +1,7 @@
+{
+  "variants": {
+    "": {
+      "model": "pumpkinpatched:block/sculk_pumpkin"
+    }
+  }
+}

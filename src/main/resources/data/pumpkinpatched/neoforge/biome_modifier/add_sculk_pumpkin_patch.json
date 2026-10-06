@@ -1,0 +1,6 @@
+{
+  "type": "neoforge:add_features",
+  "biomes": "minecraft:deep_dark",
+  "features": "pumpkinpatched:patch_sculk_pumpkin",
+  "step": "vegetal_decoration"
+}

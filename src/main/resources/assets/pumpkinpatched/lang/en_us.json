@@ -32,10 +32,16 @@
   "block.pumpkinpatched.pale_jack_o_lantern": "Pale Jack o'Lantern",
   "block.pumpkinpatched.pale_pumpkin_stem": "Pale Pumpkin Stem",
   "block.pumpkinpatched.attached_pale_pumpkin_stem": "Attached Pale Pumpkin Stem",
+  "block.pumpkinpatched.sculk_pumpkin": "Sculk Pumpkin",
+  "block.pumpkinpatched.carved_sculk_pumpkin": "Carved Sculk Pumpkin",
+  "block.pumpkinpatched.sculk_jack_o_lantern": "Sculk Jack o'Lantern",
+  "block.pumpkinpatched.sculk_pumpkin_stem": "Sculk Pumpkin Stem",
+  "block.pumpkinpatched.attached_sculk_pumpkin_stem": "Attached Sculk Pumpkin Stem",
 
   "item.pumpkinpatched.baked_pumpkin_seeds": "Baked Pumpkin Seeds",
   "item.pumpkinpatched.pumpkin_bread": "Pumpkin Bread",
   "item.pumpkinpatched.pale_pumpkin_seeds": "Pale Pumpkin Seeds",
+  "item.pumpkinpatched.sculk_pumpkin_seeds": "Sculk Pumpkin Seeds",
 
   "itemGroup.pumpkinpatched.blocks": "Pumpkin Patched: Blocks",
   "itemGroup.pumpkinpatched.items": "Pumpkin Patched: Items"

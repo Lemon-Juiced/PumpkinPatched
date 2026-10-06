@@ -34,7 +34,8 @@ public class PPBlocks {
     public static final DeferredRegister.Blocks BLOCKS = DeferredRegister.createBlocks(PumpkinPatched.MODID);
 
     // Pale Pumpkins
-    public static final DeferredBlock<PalePumpkinBlock> PALE_PUMPKIN = registerBlock("pale_pumpkin", PalePumpkinBlock::new,
+    public static final DeferredBlock<CarvablePumpkinBlock> PALE_PUMPKIN = registerBlock("pale_pumpkin",
+            properties -> new CarvablePumpkinBlock(PPBlocks.CARVED_PALE_PUMPKIN, CarvablePumpkinBlock.carveLootTable("pale_pumpkin"), properties),
             properties -> properties
                     .mapColor(MapColor.COLOR_LIGHT_GRAY)
                     .instrument(NoteBlockInstrument.DIDGERIDOO)
@@ -71,6 +72,52 @@ public class PPBlocks {
                     .pushReaction(PushReaction.DESTROY));
     public static final DeferredBlock<AttachedStemBlock> ATTACHED_PALE_PUMPKIN_STEM = BLOCKS.registerBlock("attached_pale_pumpkin_stem",
             properties -> new AttachedStemBlock(blockKey("pale_pumpkin_stem"), blockKey("pale_pumpkin"), itemKey("pale_pumpkin_seeds"), BlockTags.SUPPORTS_PUMPKIN_STEM, properties),
+            properties -> properties
+                    .mapColor(MapColor.PLANT)
+                    .noCollision()
+                    .instabreak()
+                    .sound(SoundType.WOOD)
+                    .pushReaction(PushReaction.DESTROY));
+
+    // Sculk Pumpkins
+    public static final DeferredBlock<CarvablePumpkinBlock> SCULK_PUMPKIN = registerBlock("sculk_pumpkin",
+            properties -> new CarvablePumpkinBlock(PPBlocks.CARVED_SCULK_PUMPKIN, CarvablePumpkinBlock.carveLootTable("sculk_pumpkin"), properties),
+            properties -> properties
+                    .mapColor(MapColor.COLOR_BLACK)
+                    .instrument(NoteBlockInstrument.DIDGERIDOO)
+                    .strength(1.0F)
+                    .sound(SoundType.SCULK)
+                    .pushReaction(PushReaction.DESTROY));
+    public static final DeferredBlock<CarvedPumpkinBlock> CARVED_SCULK_PUMPKIN = registerBlock("carved_sculk_pumpkin", CarvedPumpkinBlock::new,
+            properties -> properties
+                    .mapColor(MapColor.COLOR_BLACK)
+                    .strength(1.0F)
+                    .sound(SoundType.SCULK)
+                    .isValidSpawn(Blocks::always)
+                    .pushReaction(PushReaction.DESTROY),
+            itemProperties -> Waypoint.addHideAttribute(itemProperties)
+                    .component(DataComponents.EQUIPPABLE, Equippable.builder(EquipmentSlot.HEAD).setSwappable(false).setCameraOverlay(Identifier.withDefaultNamespace("misc/pumpkinblur")).build()));
+    public static final DeferredBlock<CarvedPumpkinBlock> SCULK_JACK_O_LANTERN = registerBlock("sculk_jack_o_lantern", CarvedPumpkinBlock::new,
+            properties -> properties
+                    .mapColor(MapColor.COLOR_BLACK)
+                    .strength(1.0F)
+                    .sound(SoundType.SCULK)
+                    .lightLevel(state -> 15)
+                    .isValidSpawn(Blocks::always)
+                    .pushReaction(PushReaction.DESTROY));
+
+    // Sculk Pumpkin Stems (no block items, Sculk Pumpkin Seeds in PPItems places the stem)
+    public static final DeferredBlock<StemBlock> SCULK_PUMPKIN_STEM = BLOCKS.registerBlock("sculk_pumpkin_stem",
+            properties -> new StemBlock(blockKey("sculk_pumpkin"), blockKey("attached_sculk_pumpkin_stem"), itemKey("sculk_pumpkin_seeds"), BlockTags.SUPPORTS_PUMPKIN_STEM, BlockTags.SUPPORTS_PUMPKIN_STEM_FRUIT, properties),
+            properties -> properties
+                    .mapColor(MapColor.PLANT)
+                    .noCollision()
+                    .randomTicks()
+                    .instabreak()
+                    .sound(SoundType.HARD_CROP)
+                    .pushReaction(PushReaction.DESTROY));
+    public static final DeferredBlock<AttachedStemBlock> ATTACHED_SCULK_PUMPKIN_STEM = BLOCKS.registerBlock("attached_sculk_pumpkin_stem",
+            properties -> new AttachedStemBlock(blockKey("sculk_pumpkin_stem"), blockKey("sculk_pumpkin"), itemKey("sculk_pumpkin_seeds"), BlockTags.SUPPORTS_PUMPKIN_STEM, properties),
             properties -> properties
                     .mapColor(MapColor.PLANT)
                     .noCollision()

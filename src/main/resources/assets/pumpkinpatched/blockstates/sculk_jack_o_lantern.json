@@ -1,0 +1,19 @@
+{
+  "variants": {
+    "facing=north": {
+      "model": "pumpkinpatched:block/sculk_jack_o_lantern"
+    },
+    "facing=east": {
+      "model": "pumpkinpatched:block/sculk_jack_o_lantern",
+      "y": 90
+    },
+    "facing=south": {
+      "model": "pumpkinpatched:block/sculk_jack_o_lantern",
+      "y": 180
+    },
+    "facing=west": {
+      "model": "pumpkinpatched:block/sculk_jack_o_lantern",
+      "y": 270
+    }
+  }
+}

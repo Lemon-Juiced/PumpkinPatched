@@ -1,0 +1,7 @@
+{
+  "parent": "minecraft:block/stem_fruit",
+  "textures": {
+    "stem": "pumpkinpatched:block/sculk_pumpkin_stem",
+    "upperstem": "pumpkinpatched:block/attached_sculk_pumpkin_stem"
+  }
+}

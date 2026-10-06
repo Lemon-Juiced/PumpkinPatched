@@ -3,6 +3,9 @@
   "values": [
     "pumpkinpatched:pale_pumpkin",
     "pumpkinpatched:carved_pale_pumpkin",
-    "pumpkinpatched:pale_jack_o_lantern"
+    "pumpkinpatched:pale_jack_o_lantern",
+    "pumpkinpatched:sculk_pumpkin",
+    "pumpkinpatched:carved_sculk_pumpkin",
+    "pumpkinpatched:sculk_jack_o_lantern"
   ]
 }

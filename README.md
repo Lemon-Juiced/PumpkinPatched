@@ -7,9 +7,14 @@ A Minecraft 26.1.2 mod designed to "patch" pumpkins for autumn by expanding thei
 - **Pale Pumpkins**: A new type of pumpkin that can be found in the world.
   - **Carved Pale Pumpkins**: Can be carved like normal pumpkins, but with a pale texture.
   - **Pale Jack-o-Lanterns**: Can be crafted from carved pale pumpkins and a torch.
-  - **Pale Pumpkin Patches**: Patches of pale pumpkins that can be found in the world.
+  - **Pale Pumpkin Patches**: Patches of pale pumpkins that can be found in the Pale Garden biome.
   - **Pale Pumpkin Seeds**: Can be used to grow pale pumpkins.
 - **Pumpkin Bread**: A new food item that can be crafted from wheat and a pumpkin.
+- **Sculk Pumpkins**: A new type of pumpkin that can be found in the world.
+  - **Carved Sculk Pumpkins**: Can be carved like normal pumpkins, but with a sculk texture.
+  - **Sculk Jack-o-Lanterns**: Can be crafted from carved sculk pumpkins and a torch.
+  - **Sculk Pumpkin Patches**: Patches of sculk pumpkins that can be found in the Deep Dark biome.
+  - **Sculk Pumpkin Seeds**: Can be used to grow sculk pumpkins.
 
 ## About
 Created for [SpookyJam 2026](https://spooky-jam.com/events/2026/).

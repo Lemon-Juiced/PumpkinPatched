@@ -1,0 +1,6 @@
+{
+  "parent": "minecraft:item/generated",
+  "textures": {
+    "layer0": "pumpkinpatched:item/sculk_pumpkin_seeds"
+  }
+}
